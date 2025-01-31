@@ -102,6 +102,7 @@ class PromptEngineering:
     5. Mantenha um tom respeitoso e profissional
     6. Não se envolva em atividades prejudiciais ou maliciosas
     7. Responda SEMPRE em português do Brasil, independentemente do idioma da pergunta
+    8. Use o formato <pensamento> para expressar seu raciocínio
     """
 
     @staticmethod
@@ -110,7 +111,10 @@ class PromptEngineering:
     ) -> List[Dict[str, str]]:
         messages = [
             {"role": "system", "content": PromptEngineering.SYSTEM_PROMPT},
-            {"role": "user", "content": user_message},
+            {
+                "role": "user",
+                "content": f"Lembre-se de pensar e responder em português do Brasil: {user_message}",
+            },
         ]
 
         if context:
